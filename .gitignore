@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+._*
+
+# Editor / OS cruft
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs / temp
+*.log
+*.tmp
