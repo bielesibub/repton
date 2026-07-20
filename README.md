@@ -1,3 +1,4 @@
+![Repton](https://img.shields.io/badge/BBC%20Micro-Repton%20-blue)
 # Repton — BBC Micro HTML5 Remake
 
 A faithful single-page HTML5 remake of **Repton**, the BBC Micro classic written by
