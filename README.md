@@ -12,6 +12,8 @@ Big thanks to [Andy Barnes](https://github.com/ajgbarnes), for doing the clever 
 
 Created purely by [Kimi K3](https://platform.kimi.ai/) and [opencode CLI](https://opencode.ai/) 
 
+**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/repton.html)**
+
 ## Playing the game
 
 
