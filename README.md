@@ -23,8 +23,6 @@ no server, build step or dependencies needed. It's the latest build; the `v1.0`,
 `v1.1` and `v1.2` folders record the development history (each has a `completion.md`
 describing that step).
 
-or play it here [Repton](https://www.charfarstar.com/repton.html)
-
 Click / press any key once to get past the Superior Software loading screen, then:
 
 | Key | Action |
