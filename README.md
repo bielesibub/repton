@@ -1,3 +1,4 @@
+![Repton](https://img.shields.io/badge/BBC%20Micro-Repton%20-blue)
 # Repton — BBC Micro HTML5 Remake
 
 A faithful single-page HTML5 remake of **Repton**, the BBC Micro classic written by
@@ -12,7 +13,10 @@ Big thanks to [Andy Barnes](https://github.com/ajgbarnes), for doing the clever 
 
 Created purely by [Kimi K3](https://platform.kimi.ai/) and [opencode CLI](https://opencode.ai/) 
 
+**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/repton.html)**
+
 ## Playing the game
+
 
 Open `repton.html` (at the repo root) in any modern browser — just double-click it,
 no server, build step or dependencies needed. It's the latest build; the `v1.0`,
