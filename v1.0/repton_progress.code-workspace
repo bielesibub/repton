@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../repton/repton2"
+		},
+		{
+			"path": "../../repton/my_repton"
+		}
+	],
+	"settings": {}
+}
