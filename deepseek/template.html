@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>REPTON — BBC Micro (Superior Software 1985)</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: #0a0a0a;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    font-family: monospace;
+  }
+  #game {
+    /* MODE 5 pixels are twice as wide as tall: canvas 256x512 shown square */
+    height: min(92vh, 184vw);
+    aspect-ratio: 1 / 1;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background: #000;
+    box-shadow: 0 0 40px rgba(0,255,0,0.15);
+  }
+  #hint {
+    color: #444; font-size: 11px; margin-top: 6px; text-align: center; line-height: 1.5;
+    user-select: none;
+  }
+  #hint b { color: #777; }
+</style>
+</head>
+<body>
+<canvas id="game" width="256" height="512"></canvas>
+<div id="hint">
+  <b>Z</b>/<b>X</b> left/right &nbsp; <b>:</b>/<b>/</b> up/down (arrows also work) &nbsp; <b>RETURN</b> status &nbsp; <b>ESC</b> kill repton<br>
+  <b>M</b> map (A&ndash;H) &nbsp; <b>S</b>/<b>Q</b> sound on/off &nbsp; <b>D</b>/<b>W</b> music on/off &nbsp; <b>R</b> restart
+</div>
+<script>
+/*__REPTON_DATA__*/
+</script>
+<script>
+/*__REPTON_GAME__*/
+</script>
+</body>
+</html>
