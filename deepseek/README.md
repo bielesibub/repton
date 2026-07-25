@@ -1,4 +1,4 @@
-# Repton — faithful single-file HTML port - v1.0
+# Repton — faithful single-file HTML port - v1.1
 
 A single-page HTML5 recreation of **Repton** (Superior Software, 1985 — Tim Tyler's
 BBC Micro classic), built **entirely from the data in the
@@ -141,11 +141,22 @@ monster crush).
 Verified headlessly with Playwright (`/tmp/test_repton*.js` against the built
 file): map/sprite decode against the disassembly's own documented examples,
 palette per level (incl. via password entry), walk animation, egg→monster
-hatch and chase, death sequence and life accounting, high-score name entry,
-level completion advancing screen/password, finishing screen L (banner +
-wrap to screen A), and the nearly-out-of-time flash. `game.js` exposes a small
-debug hook `window.__repton` (state, map, score, `setDiamonds`, `killRepton`,
-…) used by those tests.
+hatch and chase, death sequence and life accounting, high-score name entry
+layout, level completion advancing screen/password, finishing screen L
+(banner + wrap to screen A), the nearly-out-of-time flash, mini-map toggling
+from both play and the status screen, and intro→main-tune music sequencing.
+`game.js` exposes a small debug hook `window.__repton` (state, map, score,
+`setDiamonds`, `killRepton`, `introPlaying`, `musicStep`, …) used by those tests.
+
+## Version history
+
+- **v1.1** — playtest fixes: main tune no longer overlaps the intro (the
+  "garbled first 5 seconds"); `M` shows the mini-map during play and toggles
+  back to the game; name-entry screen matches the original layout (logo at
+  (0,3), single 32-char congratulations line at (0,15), entry field at
+  (2,22)/(25,22)); canvas CSS no longer clips edge characters on narrow
+  windows.
+- **v1.0** — initial release.
 
 ## Credits
 
