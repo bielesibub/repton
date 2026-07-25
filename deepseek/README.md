@@ -12,6 +12,8 @@ bytes. No asset was redrawn or substituted.
 Open **`repton.html`** in any modern browser and press SPACE.
 No server, no dependencies — the file is fully self-contained (~140 KB).
 
+**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/deepseek/repton.html)**
+
 ### Controls (original BBC keys)
 
 | Key | Action |
