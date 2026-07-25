@@ -12,8 +12,10 @@
     font-family: monospace;
   }
   #game {
-    /* MODE 5 pixels are twice as wide as tall: canvas 256x512 shown square */
-    height: min(92vh, 184vw);
+    /* MODE 5 pixels are twice as wide as tall: canvas 256x512 shown square.
+       Constrain by width so it never overflows narrow viewports. */
+    width: min(92vh, 96vw);
+    height: auto;
     aspect-ratio: 1 / 1;
     image-rendering: pixelated;
     image-rendering: crisp-edges;

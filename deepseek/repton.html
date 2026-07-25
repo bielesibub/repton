@@ -12,8 +12,10 @@
     font-family: monospace;
   }
   #game {
-    /* MODE 5 pixels are twice as wide as tall: canvas 256x512 shown square */
-    height: min(92vh, 184vw);
+    /* MODE 5 pixels are twice as wide as tall: canvas 256x512 shown square.
+       Constrain by width so it never overflows narrow viewports. */
+    width: min(92vh, 96vw);
+    height: auto;
     aspect-ratio: 1 / 1;
     image-rendering: pixelated;
     image-rendering: crisp-edges;
@@ -336,6 +338,7 @@ let musicStep = 0, musicTimer = 0, introPlaying = false, introStart = 0;
 const MUSIC_STEP_MS = 160;
 function updateMusic(dt, now) {
   if (!soundOn || !musicOn || !AC) return;   // faithful: both must be on
+  if (introPlaying) return;                  // original: intro finishes before the game (and its tune) starts
   musicTimer += dt;
   while (musicTimer >= MUSIC_STEP_MS) {
     musicTimer -= MUSIC_STEP_MS;
@@ -371,6 +374,7 @@ const sfx = {
  * ------------------------------------------------------------------ */
 const ST = { LOADING:0, STATUS:1, PASSWORD:2, PLAY:3, DEAD:4, COMPLETE:5, HIGHSCORE:6, NAME_ENTRY:7, MAP:8 };
 let state = ST.LOADING;
+let mapReturnState = ST.STATUS;          // where M was pressed (map toggles back here)
 
 let map = new Uint8Array(1024);          // current level, object per cell
 let vx = 2, vy = 2;                      // viewport top-left (tile coords, 8-bit wrap)
@@ -903,10 +907,17 @@ function enterNameEntryOrScores() {
 }
 function drawNameEntry() {
   clearScreen(); setDefaultColours();
-  drawLogoSmall();
-  printString('Congratulations. ' + String.fromCharCode(0x83) + 'Enter your name', 2, 12);
-  printString(nameBuffer + '_', 4, 14);
-  printString('Last Score : ' + String(score).padStart(6, '0'), 4, 16);
+  // logo at (0,3), red/black mask (fn_display_repton_logo_for_high_score_entry)
+  curX = 0; curY = 3;
+  for (let i = 0; i < 192; i++) {
+    drawTileMasked(REPTON_DATA.logo[i], curX, curY, 0x0F);
+    curX++; if (curX === 32) { curX = 0; curY++; }
+  }
+  // single 32-char line at (0,15): "Congratulations. " (red mask) + "Enter your name" (full colour)
+  printString(String.fromCharCode(0x81) + 'Congratulations. ' + String.fromCharCode(0x83) + 'Enter your name', 0, 15);
+  // entry field brackets at (2,22) and (25,22), name typed from (3,22)
+  printString('&', 2, 22); printString('&', 25, 22);
+  printString(nameBuffer + '_', 3, 22);
 }
 function submitName() {
   hiTable.push({ score, name: nameBuffer.trim() || 'Player' });
@@ -1004,7 +1015,12 @@ window.addEventListener('keydown', e => {
   else if (state === ST.STATUS) statusKey(e);
   else if (state === ST.PASSWORD) passwordKey(e);
   else if (state === ST.PLAY) playKey(e);
-  else if (state === ST.MAP && e.code === 'Space') { enterStatusScreen(); e.preventDefault(); }
+  else if (state === ST.MAP && (e.code === 'Space' || e.code === 'KeyM')) {
+    // return to wherever the map was opened from (play or status)
+    if (mapReturnState === ST.PLAY) setLevelColour(LEVEL_COLOURS[screenNum]), state = ST.PLAY;
+    else enterStatusScreen();
+    e.preventDefault();
+  }
   else if (state === ST.HIGHSCORE && e.code === 'Space') { newGameAfterScores(); e.preventDefault(); }
   else if (state === ST.NAME_ENTRY) nameKey(e);
   else if (state === ST.COMPLETE && e.code === 'Space') {
@@ -1036,7 +1052,7 @@ function statusKey(e) {
     e.preventDefault();
   } else if (e.code === 'KeyP' && !gameStarted()) enterPasswordScreen();
   else if (e.code === 'KeyR' && gameStarted()) restartGame();
-  else if (e.code === 'KeyM' && screenNum < 8) { state = ST.MAP; drawMiniMap(); }
+  else if (e.code === 'KeyM' && screenNum < 8) { mapReturnState = ST.STATUS; state = ST.MAP; drawMiniMap(); }
   else if (e.code === 'KeyS') { soundOn = true; drawStatusScreen(); }
   else if (e.code === 'KeyQ') { soundOn = false; drawStatusScreen(); }
   else if (e.code === 'KeyD') { musicOn = true; drawStatusScreen(); }
@@ -1067,6 +1083,7 @@ function playKey(e) {
   else if (e.code === 'KeyQ') soundOn = false;
   else if (e.code === 'KeyD') musicOn = true;
   else if (e.code === 'KeyW') musicOn = false;
+  else if (e.code === 'KeyM' && screenNum < 8) { mapReturnState = ST.PLAY; state = ST.MAP; drawMiniMap(); }
 }
 
 /* ------------------------------------------------------------------ *
@@ -1124,7 +1141,8 @@ window.__repton = {
   get diamondsLeft() { return diamondsLeft; }, get monsters() { return monsters; },
   get screenNum() { return screenNum; },
   killRepton, crackEgg, setTime(t) { timeLeft = t; }, get animState() { return animState; },
-  setScore(s) { score = s; }, setDiamonds(n) { diamondsLeft = n; }, get flashWhite() { return flashWhite; }
+  setScore(s) { score = s; }, setDiamonds(n) { diamondsLeft = n; }, get flashWhite() { return flashWhite; },
+  get introPlaying() { return introPlaying; }, get musicStep() { return musicStep; }
 };
 
 </script>

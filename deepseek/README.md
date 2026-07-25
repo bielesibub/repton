@@ -24,7 +24,7 @@ No server, no dependencies — the file is fully self-contained (~140 KB).
 | `P` | Enter password (status screen, before starting) |
 | `S` / `Q` | Sound on / off |
 | `D` / `W` | Music on / off |
-| `M` | Mini-map (screens A–H only, like the original) |
+| `M` | Mini-map (screens A–H only, like the original); works in play and on the status screen, `M`/`SPACE` returns |
 
 ### Level passwords
 
@@ -88,7 +88,8 @@ BBC pitch byte → frequency: `f = 440 × 2^((P−137)/48)`, square-wave oscilla
 with the original ENVELOPE 1 shape (fast attack, decaying tail), plus a noise
 buffer for the percussion/noise channel. In-game music is the original
 256-step × 3-channel score stepped every 160 ms; the intro is the original
-52-step score at 80 ms. SFX pitches/volumes match the disassembly calls
+52-step score at 80 ms, played to completion before the main tune starts (in
+the original the intro is a blocking sequence before the game loop begins). SFX pitches/volumes match the disassembly calls
 (diamond tone, rock-drop noise scaled by fall height, crunch, time-up beep,
 monster crush).
 
@@ -151,3 +152,4 @@ debug hook `window.__repton` (state, map, score, `setDiamonds`, `killRepton`,
 - Original game: **Tim Tyler / Superior Software, 1985**
 - Disassembly and commentary: **[ajgbarnes/bbc-micro-repton](https://github.com/ajgbarnes/bbc-micro-repton)**
 - This port decodes and replays that data; no original assets were modified.
+- created using deepseek/deepseek-v4-pro
