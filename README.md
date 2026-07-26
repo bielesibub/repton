@@ -13,7 +13,11 @@ Big thanks to [Andy Barnes](https://github.com/ajgbarnes), for doing the clever 
 
 Created purely by [Kimi K3](https://platform.kimi.ai/) and [opencode CLI](https://opencode.ai/) 
 
-**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/repton.html)**
+**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/repton.html)** << Kimi K3
+
+**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/deepseek/repton.html)** << Deepseek v4 Pro
+
+which is best? oddly I prefer the Deepseek version. I think the monsters eggs hatch far too quick though.
 
 ## Playing the game
 
