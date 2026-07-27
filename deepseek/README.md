@@ -1,4 +1,4 @@
-# Repton — faithful single-file HTML port - v1.1
+# Repton — faithful single-file HTML port - v1.2
 
 A single-page HTML5 recreation of **Repton** (Superior Software, 1985 — Tim Tyler's
 BBC Micro classic), built **entirely from the data in the
@@ -97,8 +97,10 @@ monster crush).
 
 ### Game loop (faithful to the disassembly)
 
-- 20 ms main iteration; the full 1,024-cell map is scanned for gravity every
-  iteration, bottom-up, exactly like the original.
+- 45 ms main iteration (~22/sec — the original loop is CPU-bound with no vsync
+  wait; measured from original-hardware footage via the 43-tick egg hatch,
+  ~1.9 s). The full 1,024-cell map is scanned for gravity every iteration,
+  bottom-up, exactly like the original.
 - Repton stays fixed at screen tile (14,14); the world scrolls past him,
   1 tile per iteration (4 iterations per map cell). Keys are only read at
   object boundaries; vertical movement cancels horizontal.
@@ -119,7 +121,7 @@ monster crush).
 - Death: crunch noise, explosion small→medium→big→medium→small (120 ms each),
   480 ms pause, lose a life. **The map is not reset on death** — collected
   items stay collected, as in the original.
-- Timer is BCD 6000, −1 per tick (≈120 s). Under 300 the screen flashes white
+- Timer is BCD 6000, −1 per tick (≈4.5 min). Under 300 the screen flashes white
   on every 4th music beat with a noise beep; at 0, "Out of time." shows for
   1.6 s, then death.
 - High-score table (8 entries, default "* Superior Software *" 8000–1000) with
@@ -152,6 +154,14 @@ from both play and the status screen, and intro→main-tune music sequencing.
 
 ## Version history
 
+- **v1.2** — game speed corrected to match the original: main tick 20 ms → 45 ms
+  (~50 → ~22 iterations/sec). The original's main loop is CPU-bound (no vsync
+  wait); measured from original-hardware footage, the 43-tick egg hatch takes
+  ~1.9 s there vs 0.86 s here. Movement, gravity, hatching, monster speed and
+  the 6000-tick time limit (now ~4.5 min/screen) all pace in ticks, so the one
+  constant fixes them together; death and out-of-time are vsync-timed in the
+  original and were already correct (1.2 s / 1.6 s wall-clock). Verified with
+  Playwright: hatch = 1,923 ms (~43 ticks), timer rate = 45 ms/unit.
 - **v1.1** — playtest fixes: main tune no longer overlaps the intro (the
   "garbled first 5 seconds"); `M` shows the mini-map during play and toggles
   back to the game; name-entry screen matches the original layout (logo at

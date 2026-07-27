@@ -708,9 +708,15 @@ let outOfTimeTimer = -1;
 function startOutOfTime() { outOfTimeTimer = 0; vdir = 0; hdir = 0; }
 
 /* ------------------------------------------------------------------ *
- *  Main game tick (main_game_loop) — fixed 20ms per iteration
+ *  Main game tick (main_game_loop)
+ *  One original game-loop iteration. The original main loop is CPU-bound
+ *  (no vsync wait); measured against original-hardware footage it runs at
+ *  ~22 iterations/sec during normal play (the 43-tick egg hatch — wait += 3
+ *  per tick to $80 — takes ~1.9s there). 45ms per tick reproduces that.
+ *  (Death and out-of-time are vsync-timed in the original and stay
+ *  wall-clock here.)
  * ------------------------------------------------------------------ */
-const TICK_MS = 20;
+const TICK_MS = 45;
 
 function gameTick() {
   const alignedX = (((vx + 2) & 0xFF) & 3) === 0;
