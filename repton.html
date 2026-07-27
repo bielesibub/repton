@@ -73,7 +73,11 @@ const loadingImg = new Image();
 loadingImg.src = 'data:image/png;base64,' + DATA.loading;
 
 /* ---------------- Constants ---------------- */
-const LOOP_MS = 25;                  // one original game-loop iteration
+// One original game-loop iteration. The original main loop is CPU-bound (no
+// vsync wait), and measured against original-hardware footage it runs at ~22
+// iterations/sec during normal play: the 43-loop egg hatch (wait counter +3
+// per loop to $80) takes ~1.9s there vs ~1.1s at the old 25ms setting.
+const LOOP_MS = 45;
 const VIEW = 32;                     // viewport is 32x32 tiles
 const TILE_CANV = 8;                 // each 4x8 logical tile -> 8x8 canvas px
 const LEVELCOL = [1,4,5,1,1,1,5,5,1,4,5,6]; // physical colour 1 per screen A-L
@@ -515,7 +519,7 @@ function stepDying() {
     if (deadTimer > 64) { deadPhase = 0; deadTimer = 0; Audio8.sfxCrunch(); }
     return;
   }
-  // timeline (loops of 25ms): 5 crunch wait, 5 small, 5 med, 5 big, 5 med, 5 small, 20 blank
+  // timeline (loops of LOOP_MS): 5 crunch wait, 5 small, 5 med, 5 big, 5 med, 5 small, 20 blank
   if (deadTimer < 5) { /* crunch, sprite frozen */ }
   else if (deadTimer < 10) animState = 15;      // small
   else if (deadTimer < 15) animState = 14;      // medium
@@ -858,7 +862,7 @@ function frame(t) {
     if (state === ST_PLAY) stepPlay();
     else if (state === ST_DYING) stepDying();
     else if (state === ST_COMPLETE) { if (++dissolveT > 12) state = ST_TITLE; }
-    else if (state === ST_LOAD) { if (++dissolveT > 110) state = ST_TITLE; }
+    else if (state === ST_LOAD) { if (++dissolveT > 60) state = ST_TITLE; } // ~2.7s splash
   }
   if (pendingIntro && state === ST_TITLE && Audio8.ctx) {
     pendingIntro = false;

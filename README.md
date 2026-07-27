@@ -85,7 +85,8 @@ A key turns all safes into diamonds.
   (`$0F`/`$F0`/`$FF` nibble masks select red / yellow / green), including the exact
   status-screen layout (logo written sequentially over 6 rows of 32 chars, `Music :`
   on row 24, `Password :` on row 26, etc.).
-- Game loop runs at the original 25 ms iteration rate.
+- Game loop runs at 45 ms per iteration (~22 iterations/sec), matching the original's
+  CPU-bound main loop as measured from original-hardware footage.
 
 ## Version history
 
@@ -99,6 +100,13 @@ Progress snapshots live in the `v1.x` folders, each with its own `completion.md`
   sequentially as 6 rows of 32 tiles (was incorrectly 24×8, garbling the letters),
   `Music :`/`Password :` moved to rows 24/26, `By` comma removed, press-line spacing
   matched to the original strings, and the non-original HTML hint line removed.
+- **v1.3** — game speed corrected to match the original. The main loop ran at 40
+  iterations/sec (25 ms); the original's loop is CPU-bound at ~22 iterations/sec,
+  measured from original-hardware footage (the 43-loop egg hatch takes ~1.9 s in the
+  original vs ~1.1 s in the port). Everything paced in loop units — Repton and monster
+  movement, rock/egg falls and rolls, egg hatching, the death sequence and the
+  6000-unit time limit (~4.5 min per screen) — now matches the original; the loading
+  splash was re-based to keep ~2.7 s.
 
 ## Credits
 
