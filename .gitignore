@@ -10,3 +10,7 @@ Desktop.ini
 # Logs / temp
 *.log
 *.tmp
+
+# Dependencies / virtualenvs
+node_modules/
+venv/

@@ -1,0 +1,1 @@
+I've lost the code for my old version of repton that I made on an old 386 pc. it never had any clock checks, so it runs far too fast, is there anyway you can fix it?
