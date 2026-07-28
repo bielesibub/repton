@@ -21,6 +21,8 @@ which is best? oddly I prefer the Deepseek version.
 
 --I think the monsters eggs hatch far too quick though.-- << fixed, v1.3
 
+To prove I am no Repton fly-by-night, heres a version I wrote when I was a sponnie at IBM in ~1996. [REPTON.EXE](my_repton) << Reverse engineered by Kimi K3 from [my_repton](my_repton) it runs but needs a bit of work.
+
 ## Playing the game
 
 
