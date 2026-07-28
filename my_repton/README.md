@@ -1,6 +1,6 @@
 # REPTON (1994 DOS) — Original Binaries & HTML5 Revival
 
-This folder holds the author's **own 1994 MS-DOS game REPTON**, written in Turbo C++
+This folder **my own very old 1994 MS-DOS game REPTON**, written in Turbo C++
 (BGI graphics) on a 386 PC, preserved **as binaries only — the source code is lost**.
 In July 2026 the game was reverse-engineered from `REPTON.EXE` (which fortunately
 retains its full symbol table) and rebuilt as a single self-contained HTML5 file.
@@ -137,6 +137,6 @@ a capstone-based disassembler plus decoding of the PCX graphics and DAT maps:
 
 ## Credits
 
-- Original game © 1994 the repo author (Turbo C++ / BGI, MS-DOS).
+- Original game © 1994 me (Turbo C++ / BGI, MS-DOS).
 - Reverse engineering and HTML5 port: [Kimi K3](https://platform.kimi.ai/) with
   [opencode CLI](https://opencode.ai/), July 2026.
