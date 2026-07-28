@@ -92,7 +92,7 @@ A key turns all safes into diamonds.
 
 ## Version history
 
-Progress snapshots live in the `v1.x` folders, each with its own `completion.md`.
+Progress snapshots live in the `v1.x` folders, each with its own `completion.md`. big bad nasty naughty versioning is off since v1.3, using github maybe need to think how completion.md is sorted out as its quite important.
 
 - **v1.0** — first working single-page build from the disassembly data.
 - **v1.1** — fixed the palette (logical colour 3 is green, not white), score
