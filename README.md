@@ -11,7 +11,7 @@ disassembly, so what you see and hear is the real game data, not redrawn approxi
 
 Big thanks to [Andy Barnes](https://github.com/ajgbarnes), for doing the clever  stuff.
 
-Created purely by [Kimi K3](https://platform.kimi.ai/) and [opencode CLI](https://opencode.ai/) 
+Created purely by [Kimi K3](https://platform.kimi.ai/) and [Claude CLI](https://claude.ai/) 
 
 **[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/repton.html)** << Kimi K3
 
