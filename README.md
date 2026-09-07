@@ -17,7 +17,7 @@ Created purely by [Kimi K3](https://platform.kimi.ai/) and [Claude CLI](https://
 
 **[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/deepseek/repton.html)** << Deepseek v4 Pro
 
-**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/astra/repton.html)** << GPT-6 Astra on medium
+**[▶ Play](https://html-preview.github.io/?url=https://github.com/bielesibub/repton/main/astra/index.html)** << GPT-6 Astra on medium
 
 which is best? oddly I prefer the Deepseek version. 
 
